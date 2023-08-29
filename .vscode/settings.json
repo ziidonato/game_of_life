@@ -1,0 +1,6 @@
+{
+    "files.associations": {
+        "parse_args.h": "c",
+        "config.h": "c"
+    }
+}
