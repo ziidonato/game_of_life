@@ -1,11 +1,11 @@
 cmake_minimum_required(VERSION 3.0.0)
 project(game_of_life VERSION 0.1.0 LANGUAGES C)
-add_compile_options(-Wall -Wextra -Wpedantic -std=c99)
+add_compile_options(-Wall -Wextra -Wpedantic -std=gnu11)
 
 include(CTest)
 enable_testing()
 
-set(SOURCES src/main.c src/config.c src/life/life.c)
+set(SOURCES src/main.c src/life/life.c)
 set(HEADERS src/config.h src/life/life.h)
 
 add_executable(game_of_life ${SOURCES})

@@ -1,6 +1,7 @@
 {
+    "C_Cpp.default.configurationProvider": "ms-vscode.cmake-tools",
     "files.associations": {
-        "parse_args.h": "c",
-        "config.h": "c"
+        "time.h": "c",
+        "cstdlib": "c"
     }
 }

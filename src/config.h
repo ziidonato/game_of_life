@@ -1,5 +1,4 @@
 #pragma once
-#include <stdint.h>
-
-extern const uint32_t GRID_SIZE;
-extern const uint32_t GENERATIONS;
+#define GRID_SIZE 25
+#define GENERATIONS 10
+#define SLEEP_TIME_MS 1000

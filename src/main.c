@@ -1,26 +1,15 @@
 #include "config.h"
 #include "life/life.h"
+#include <pthread.h>
 #include <raylib.h>
 #include <stdint.h>
 #include <stdio.h>
 #include <string.h>
 
-int main()
+void *display_grid(void)
 {
     const int screenWidth = 800;
     const int screenHeight = 450;
-
-    uint8_t grid[GRID_SIZE][GRID_SIZE];
-    memset(grid, 0, sizeof(grid));
-
-    for (uint32_t x = 0; x < GRID_SIZE; x++) {
-        for (uint32_t y = 0; y < GRID_SIZE; y++) {
-            if ((x < (GRID_SIZE / 2) && y < (GRID_SIZE / 2)) ||
-                (x >= (GRID_SIZE / 2) && y >= (GRID_SIZE / 2))) {
-                grid[x][y] = 1;
-            }
-        }
-    }
 
     InitWindow(screenWidth, screenHeight,
                "raylib [core] example - basic window");
@@ -28,6 +17,7 @@ int main()
     SetTargetFPS(60);
     while (!WindowShouldClose()) {
         BeginDrawing();
+        pthread_mutex_lock(&grid_mutex);
         ClearBackground(RAYWHITE);
         for (uint32_t x = 0; x < GRID_SIZE; x++) {
             for (uint32_t y = 0; y < GRID_SIZE; y++) {
@@ -37,24 +27,23 @@ int main()
                 }
             }
         }
+        pthread_mutex_unlock(&grid_mutex);
         EndDrawing();
     }
 
-    // if (GENERATIONS > 0) {
-    //     for (uint32_t i = 0; i < GENERATIONS; i++) {
-    //         next_generation(grid);
-    //     }
-    // }
+    pthread_exit(NULL);
+}
 
-    // for (uint32_t x = 0; x < GRID_SIZE; x++) {
-    //     for (uint32_t y = 0; y < GRID_SIZE; y++) {
-    //         if (grid[x][y] == 1) {
-    //             printf("*", grid[x][y]);
-    //         } else {
-    //             printf(" ");
-    //         }
-    //     }
-    //     printf("\n");
-    // }
-    // return 0;
+int main()
+{
+    pthread_t thread1;
+    pthread_create(&thread1, NULL, simulate, NULL);
+
+    pthread_t thread2;
+    pthread_create(&thread2, NULL, display_grid, NULL);
+
+    pthread_join(thread1, NULL);
+    pthread_join(thread2, NULL);
+
+    return 0;
 }
