@@ -1,4 +1,5 @@
 #include "../config.h"
+#include "life.h"
 #include <stdint.h>
 #include <stdio.h>
 #include <string.h>
@@ -8,7 +9,7 @@ uint8_t within_bounds(int32_t x, int32_t y)
     return x >= 0 && x < (int)GRID_SIZE && y >= 0 && y < (int)GRID_SIZE;
 }
 
-uint8_t is_neighbor(int32_t x, int32_t y, uint8_t grid[GRID_SIZE][GRID_SIZE])
+uint8_t is_neighbor(int32_t x, int32_t y)
 {
     return within_bounds(x, y) && grid[x][y] == 1;
 }
@@ -71,5 +72,12 @@ void next_generation(uint8_t grid[GRID_SIZE][GRID_SIZE])
         for (uint32_t y = 0; y < GRID_SIZE; y++) {
             grid[x][y] = next_grid[x][y];
         }
+    }
+}
+
+void simulate(uint8_t grid[GRID_SIZE][GRID_SIZE])
+{
+    for (uint32_t i = 0; i < GENERATIONS; i++) {
+        next_generation(grid);
     }
 }

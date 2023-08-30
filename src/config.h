@@ -1,5 +1,3 @@
 #pragma once
-#include <stdint.h>
-
-extern const uint32_t GRID_SIZE;
-extern const uint32_t GENERATIONS;
+#define GRID_SIZE 6
+#define GENERATIONS 1

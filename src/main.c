@@ -45,16 +45,4 @@ int main()
     //         next_generation(grid);
     //     }
     // }
-
-    // for (uint32_t x = 0; x < GRID_SIZE; x++) {
-    //     for (uint32_t y = 0; y < GRID_SIZE; y++) {
-    //         if (grid[x][y] == 1) {
-    //             printf("*", grid[x][y]);
-    //         } else {
-    //             printf(" ");
-    //         }
-    //     }
-    //     printf("\n");
-    // }
-    // return 0;
 }
