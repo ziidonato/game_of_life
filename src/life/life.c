@@ -1,14 +1,11 @@
 #include "life.h"
-#include "../config.h"
+#include "config.h"
 #include <pthread.h>
 #include <stdint.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include <time.h>
-
-uint8_t grid[GRID_SIZE][GRID_SIZE];
-pthread_mutex_t grid_mutex;
 
 void sleep_ms(uint32_t ms)
 {
@@ -91,13 +88,10 @@ void next_generation()
     pthread_mutex_unlock(&grid_mutex);
 }
 
-void *simulate(void)
+void *simulate(void *arg)
 {
+    (void)arg;
     int return_value = 0;
-    if (pthread_mutex_init(&grid_mutex, NULL) != 0) {
-        perror("Mutex init failed");
-        return_value = 1;
-    }
 
     pthread_mutex_lock(&grid_mutex);
     memset(grid, 0, sizeof(grid));

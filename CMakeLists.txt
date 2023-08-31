@@ -9,6 +9,7 @@ set(SOURCES src/main.c src/life/life.c)
 set(HEADERS src/config.h src/life/life.h)
 
 add_executable(game_of_life ${SOURCES})
+target_include_directories(game_of_life PRIVATE src)
 
 set(CPACK_PROJECT_NAME ${PROJECT_NAME})
 set(CPACK_PROJECT_VERSION ${PROJECT_VERSION})
