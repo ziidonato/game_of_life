@@ -12,3 +12,5 @@ struct grid_data {
     uint32_t display_offset_x;
     uint32_t display_offset_y;
 };
+
+void set_grid(struct grid_data *data, void (*pattern)(uint8_t **, uint32_t));

@@ -44,8 +44,6 @@ void *gui_thread(void *_grid_data)
     double generations_per_frame = GENERATIONS_PER_SECOND / 60.0;
     if (generations_per_frame < 0) {
         grid_data->generations_to_simulate = -1;
-        printf("Generations to simulate: %f\n",
-               grid_data->generations_to_simulate);
     }
 
     uint32_t cells_x = SCREEN_WIDTH_PX / CELL_SIZE_PX;
@@ -53,12 +51,16 @@ void *gui_thread(void *_grid_data)
 
     while (!WindowShouldClose()) {
         if (generations_per_frame > 0) {
+            pthread_mutex_lock(&grid_data->mutex);
             grid_data->generations_to_simulate += generations_per_frame;
+            pthread_mutex_unlock(&grid_data->mutex);
         }
 
         BeginDrawing();
         ClearBackground(RAYWHITE);
+        pthread_mutex_lock(&grid_data->mutex);
         gui_draw_grid(grid_data, cells_x, cells_y);
+        pthread_mutex_unlock(&grid_data->mutex);
         DrawText("Generation: ", 10, 300, 20, BLACK);
         DrawText(TextFormat("%d", grid_data->current_generation), 150, 300, 20,
                  BLACK);

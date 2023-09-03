@@ -1,10 +1,4 @@
-#pragma once
-#include "config.h"
-#include "globals/globals.h"
-
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
+#include "base.h"
 
 uint8_t **init_grid(uint32_t size)
 {

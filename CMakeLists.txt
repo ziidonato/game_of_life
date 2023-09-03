@@ -8,6 +8,9 @@ enable_testing()
 set(SOURCES 
     src/life/life.c 
     src/gui/gui.c
+    src/life/patterns.c
+    src/base/base.c
+    src/globals/globals.c
     )
 
 set(HEADERS 
@@ -17,7 +20,8 @@ set(HEADERS
     src/gui/gui.h
     src/config.h
     lib/ubench/ubench.h
-    src/life/base.h
+    src/base/base.h
+    src/life/patterns.h
     )
 
 add_executable(game_of_life src/main.c ${SOURCES} ${HEADERS})
@@ -43,5 +47,11 @@ target_include_directories(tests PRIVATE src)
 target_include_directories(tests PRIVATE lib/ubench)
 target_link_libraries(tests PRIVATE raylib)
 
+project(benchmarks)
+add_executable(benchmarks benchmarks/main.c ${SOURCES} ${HEADERS})
+target_include_directories(benchmarks PRIVATE lib/munit)
+target_include_directories(benchmarks PRIVATE src)
+target_include_directories(benchmarks PRIVATE lib/ubench)
+target_link_libraries(benchmarks PRIVATE raylib)
 
 

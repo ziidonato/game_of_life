@@ -1,7 +1,8 @@
 #include "life.h"
-#include "base.h"
+#include "base/base.h"
 #include "config.h"
 #include "globals/globals.h"
+#include "patterns.h"
 
 uint8_t within_bounds(int32_t x, int32_t y, struct grid_data *data)
 {
@@ -125,6 +126,7 @@ void next_generation(struct grid_data *data)
 
     data->current_generation++;
     data->generations_to_simulate--;
+
     pthread_mutex_unlock(&data->mutex);
 }
 
@@ -136,16 +138,8 @@ void *simulate(void *grid_data)
     pthread_mutex_lock(&data->mutex);
     data->grid = init_grid(data->current_grid_size);
 
-    for (uint32_t x = 0; x < data->current_grid_size; x++) {
-        for (uint32_t y = 0; y < data->current_grid_size; y++) {
-            if (x <= data->current_grid_size / 2 &&
-                    y >= data->current_grid_size / 2 ||
-                x >= data->current_grid_size / 2 &&
-                    y <= data->current_grid_size / 2) {
-                data->grid[x][y] = 1;
-            }
-        }
-    }
+    // set_grid(data, four_gliders);
+    four_gliders(data->grid, data->current_grid_size);
 
     pthread_mutex_unlock(&data->mutex);
 
@@ -156,8 +150,8 @@ void *simulate(void *grid_data)
     while (data->current_generation < GENERATIONS || GENERATIONS < 0) {
         pthread_mutex_lock(&data->mutex);
         if (data->exit_flag == 1) {
-            pthread_mutex_unlock(&data->mutex);
             return_value = 0;
+            pthread_mutex_unlock(&data->mutex);
             break;
         }
         pthread_mutex_unlock(&data->mutex);
