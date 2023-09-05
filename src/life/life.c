@@ -3,6 +3,7 @@
 #include "config.h"
 #include "globals/globals.h"
 #include "patterns.h"
+#include <stdlib.h>
 
 uint8_t within_bounds(int32_t x, int32_t y, struct grid_data *data)
 {
@@ -154,15 +155,21 @@ void *simulate(void *grid_data)
             pthread_mutex_unlock(&data->mutex);
             break;
         }
-        pthread_mutex_unlock(&data->mutex);
 
         while (data->generations_to_simulate >= 1.0) {
+            pthread_mutex_unlock(&data->mutex);
             next_generation(data);
+            pthread_mutex_lock(&data->mutex);
         }
 
         if (data->generations_to_simulate < 0) {
+            pthread_mutex_unlock(&data->mutex);
             next_generation(data);
+            pthread_mutex_lock(&data->mutex);
         }
+        pthread_mutex_unlock(&data->mutex);
+        struct timespec sleep_time = {0, 1};
+        nanosleep(&sleep_time, NULL);
     }
 
     pthread_exit(&return_value);

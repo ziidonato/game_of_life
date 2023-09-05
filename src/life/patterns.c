@@ -1,7 +1,7 @@
 #include "patterns.h"
 #include "base/base.h"
 
-void up_left_glider(struct ordered_pair *pair, uint8_t **grid)
+void up_right_glider(struct ordered_pair *pair, uint8_t **grid)
 {
     grid[pair->x][pair->y] = 1;
     grid[pair->x + 1][pair->y] = 1;
@@ -10,7 +10,7 @@ void up_left_glider(struct ordered_pair *pair, uint8_t **grid)
     grid[pair->x + 1][pair->y + 2] = 1;
 }
 
-void up_right_glider(struct ordered_pair *pair, uint8_t **grid)
+void up_left_glider(struct ordered_pair *pair, uint8_t **grid)
 {
     grid[pair->x][pair->y] = 1;
     grid[pair->x + 1][pair->y] = 1;
@@ -19,7 +19,7 @@ void up_right_glider(struct ordered_pair *pair, uint8_t **grid)
     grid[pair->x + 1][pair->y + 2] = 1;
 }
 
-void down_left_glider(struct ordered_pair *pair, uint8_t **grid)
+void down_right_glider(struct ordered_pair *pair, uint8_t **grid)
 {
     grid[pair->x][pair->y] = 1;
     grid[pair->x + 1][pair->y] = 1;
@@ -28,7 +28,7 @@ void down_left_glider(struct ordered_pair *pair, uint8_t **grid)
     grid[pair->x + 1][pair->y - 2] = 1;
 }
 
-void down_right_glider(struct ordered_pair *pair, uint8_t **grid)
+void down_left_glider(struct ordered_pair *pair, uint8_t **grid)
 {
     grid[pair->x][pair->y] = 1;
     grid[pair->x + 1][pair->y] = 1;
