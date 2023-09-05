@@ -1,6 +1,6 @@
 #pragma once
 #define GRID_SIZE 100
-#define GENERATIONS -1
+#define GENERATIONS 100
 #define GENERATIONS_PER_SECOND -1
 
 #define SCREEN_WIDTH_PX 1500

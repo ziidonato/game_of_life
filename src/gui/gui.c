@@ -42,9 +42,6 @@ void *gui_thread(void *_grid_data)
     gui_init();
 
     double generations_per_frame = GENERATIONS_PER_SECOND / 60.0;
-    if (generations_per_frame < 0) {
-        grid_data->generations_to_simulate = -1;
-    }
 
     uint32_t cells_x = SCREEN_WIDTH_PX / CELL_SIZE_PX;
     uint32_t cells_y = SCREEN_HEIGHT_PX / CELL_SIZE_PX;

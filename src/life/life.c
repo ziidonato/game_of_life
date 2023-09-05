@@ -136,19 +136,12 @@ void *simulate(void *grid_data)
     struct grid_data *data = (struct grid_data *)grid_data;
     int return_value = 0;
 
-    pthread_mutex_lock(&data->mutex);
-    data->grid = init_grid(data->current_grid_size);
-
-    // set_grid(data, four_gliders);
-    four_gliders(data->grid, data->current_grid_size);
-
-    pthread_mutex_unlock(&data->mutex);
-
     if (GENERATIONS == 0) {
         return_value = 0;
     }
 
-    while (data->current_generation < GENERATIONS || GENERATIONS < 0) {
+    while (data->current_generation < data->total_generations_to_simulate ||
+           data->total_generations_to_simulate < 0) {
         pthread_mutex_lock(&data->mutex);
         if (data->exit_flag == 1) {
             return_value = 0;
@@ -156,17 +149,18 @@ void *simulate(void *grid_data)
             break;
         }
 
-        while (data->generations_to_simulate >= 1.0) {
+        if (data->generations_to_simulate >= 1.0) {
+            while (data->generations_to_simulate >= 1.0) {
+                pthread_mutex_unlock(&data->mutex);
+                next_generation(data);
+                pthread_mutex_lock(&data->mutex);
+            }
+        } else if (data->generations_to_simulate <= 0) {
             pthread_mutex_unlock(&data->mutex);
             next_generation(data);
             pthread_mutex_lock(&data->mutex);
         }
 
-        if (data->generations_to_simulate < 0) {
-            pthread_mutex_unlock(&data->mutex);
-            next_generation(data);
-            pthread_mutex_lock(&data->mutex);
-        }
         pthread_mutex_unlock(&data->mutex);
         struct timespec sleep_time = {0, 1};
         nanosleep(&sleep_time, NULL);
