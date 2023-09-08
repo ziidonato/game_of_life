@@ -52,7 +52,7 @@ set(BENCHMARKS_SOURCES
     benchmarks/benchmark_life.c
     )
 set(BENCHMARKS_HEADERS 
-    benchmarks/benchmark_life.h)
+    )
 add_executable(benchmarks benchmarks/main.c ${SOURCES} ${HEADERS} ${BENCHMARKS_SOURCES} ${BENCHMARKS_HEADERS})
 target_include_directories(benchmarks PRIVATE lib/munit)
 target_include_directories(benchmarks PRIVATE src)
