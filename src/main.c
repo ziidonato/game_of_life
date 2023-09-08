@@ -16,7 +16,7 @@ int main()
         .grid = init_grid(GRID_SIZE),
         .current_grid_size = GRID_SIZE,
         .total_generations_to_simulate = GENERATIONS,
-        .generations_to_simulate = GENERATIONS < 0 ? -1 : 0,
+        .generations_to_simulate = GENERATIONS_PER_SECOND < 0 ? -1 : 0,
         .exit_flag = 0,
         .current_generation = 0,
         .display_offset_x = 0,
@@ -26,7 +26,7 @@ int main()
     four_gliders(data.grid, data.current_grid_size);
 
     pthread_t thread1;
-    pthread_create(&thread1, NULL, simulate, &data);
+    pthread_create(&thread1, NULL, simulate_thread, &data);
 
     pthread_t thread2;
     pthread_create(&thread2, NULL, gui_thread, &data);

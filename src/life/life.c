@@ -101,8 +101,7 @@ uint8_t lives_on_borders(struct grid_data *data)
     return return_value;
 }
 
-void next_generation(struct grid_data *data)
-{
+void next_generation(struct grid_data *data) {
     pthread_mutex_lock(&data->mutex);
 
     if (lives_on_borders(data)) {
@@ -126,23 +125,24 @@ void next_generation(struct grid_data *data)
     }
 
     data->current_generation++;
-    data->generations_to_simulate--;
-
+    if (data->generations_to_simulate > 0)
+    {
+        data->generations_to_simulate--;
+    }
     pthread_mutex_unlock(&data->mutex);
 }
 
-void *simulate(void *grid_data)
+int simulate(struct grid_data *data)
 {
-    struct grid_data *data = (struct grid_data *)grid_data;
     int return_value = 0;
 
-    if (GENERATIONS == 0) {
+    pthread_mutex_lock(&data->mutex);
+    if (data->total_generations_to_simulate == 0) {
         return_value = 0;
     }
 
     while (data->current_generation < data->total_generations_to_simulate ||
            data->total_generations_to_simulate < 0) {
-        pthread_mutex_lock(&data->mutex);
         if (data->exit_flag == 1) {
             return_value = 0;
             pthread_mutex_unlock(&data->mutex);
@@ -155,7 +155,7 @@ void *simulate(void *grid_data)
                 next_generation(data);
                 pthread_mutex_lock(&data->mutex);
             }
-        } else if (data->generations_to_simulate <= 0) {
+        } else if (data->generations_to_simulate < 0) {
             pthread_mutex_unlock(&data->mutex);
             next_generation(data);
             pthread_mutex_lock(&data->mutex);
@@ -166,5 +166,10 @@ void *simulate(void *grid_data)
         nanosleep(&sleep_time, NULL);
     }
 
+    return return_value;
+}
+
+void *simulate_thread(void *grid_data) {
+    int return_value = simulate((struct grid_data *) grid_data);
     pthread_exit(&return_value);
 }
