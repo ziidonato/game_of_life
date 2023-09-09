@@ -1,0 +1,5 @@
+name, mean (ns), stddev (%), confidence (%)
+four_gliders.100_generations, 15397345, 0.477769, 0.389192
+two_squares.100_generations, 35168417, 5.991951, 1.992684
+four_gliders.1000_generations, 2184905989, 7.273642, 2.418924
+two_squares.1000_generations, 2333650576, 7.733365, 1.285905
