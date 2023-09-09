@@ -1,14 +1,14 @@
-#include <ubench.h>
-#include "globals/globals.h"
 #include "base/base.h"
+#include "globals/globals.h"
+#include "life/life.h"
 #include "life/patterns.h"
 #include <pthread.h>
-#include "life/life.h"
+#include <ubench.h>
 
 UBENCH_EX(four_gliders, 100_generations)
 {
     struct grid_data data = {
-            .mutex = PTHREAD_MUTEX_INITIALIZER,
+        .mutex = PTHREAD_MUTEX_INITIALIZER,
     };
 
     UBENCH_DO_BENCHMARK()
@@ -26,7 +26,7 @@ UBENCH_EX(four_gliders, 100_generations)
 UBENCH_EX(two_squares, 100_generations)
 {
     struct grid_data data = {
-            .mutex = PTHREAD_MUTEX_INITIALIZER,
+        .mutex = PTHREAD_MUTEX_INITIALIZER,
     };
 
     UBENCH_DO_BENCHMARK()
@@ -44,7 +44,7 @@ UBENCH_EX(two_squares, 100_generations)
 UBENCH_EX(four_gliders, 1000_generations)
 {
     struct grid_data data = {
-            .mutex = PTHREAD_MUTEX_INITIALIZER,
+        .mutex = PTHREAD_MUTEX_INITIALIZER,
     };
 
     UBENCH_DO_BENCHMARK()
@@ -62,7 +62,7 @@ UBENCH_EX(four_gliders, 1000_generations)
 UBENCH_EX(two_squares, 1000_generations)
 {
     struct grid_data data = {
-            .mutex = PTHREAD_MUTEX_INITIALIZER,
+        .mutex = PTHREAD_MUTEX_INITIALIZER,
     };
 
     UBENCH_DO_BENCHMARK()

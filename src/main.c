@@ -10,7 +10,7 @@
 #include <stdio.h>
 #include <string.h>
 
-int main()
+int main(void)
 {
     struct grid_data data = {
         .grid = init_grid(GRID_SIZE),

@@ -5,7 +5,7 @@
 
 #include <raylib.h>
 
-void gui_init()
+void gui_init(void)
 {
     InitWindow(SCREEN_WIDTH_PX, SCREEN_HEIGHT_PX, "Conway's Game of Life");
     SetTargetFPS(60);

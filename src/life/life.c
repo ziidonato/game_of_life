@@ -37,25 +37,9 @@ uint8_t neighbors(uint32_t x, uint32_t y, struct grid_data *grid)
 
 uint8_t live_or_die(uint32_t value, uint8_t neighbors)
 {
-    uint8_t return_value = 0;
+    return value == 1 ? neighbors == 2 || neighbors == 3 : neighbors == 3;
 
-    if (value == 1) {
-        if (neighbors < 2) {
-            return_value = 0;
-        } else if (neighbors > 3) {
-            return_value = 0;
-        } else {
-            return_value = 1;
-        }
-    } else {
-        if (neighbors == 3) {
-            return_value = 1;
-        } else {
-            return_value = 0;
-        }
-    }
 
-    return return_value;
 }
 
 void expand_grid(struct grid_data *data)
@@ -101,7 +85,8 @@ uint8_t lives_on_borders(struct grid_data *data)
     return return_value;
 }
 
-void next_generation(struct grid_data *data) {
+void next_generation(struct grid_data *data)
+{
     pthread_mutex_lock(&data->mutex);
 
     if (lives_on_borders(data)) {
@@ -125,8 +110,7 @@ void next_generation(struct grid_data *data) {
     }
 
     data->current_generation++;
-    if (data->generations_to_simulate > 0)
-    {
+    if (data->generations_to_simulate > 0) {
         data->generations_to_simulate--;
     }
     pthread_mutex_unlock(&data->mutex);
@@ -169,7 +153,8 @@ int simulate(struct grid_data *data)
     return return_value;
 }
 
-void *simulate_thread(void *grid_data) {
-    int return_value = simulate((struct grid_data *) grid_data);
+void *simulate_thread(void *grid_data)
+{
+    int return_value = simulate((struct grid_data *)grid_data);
     pthread_exit(&return_value);
 }
