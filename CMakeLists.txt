@@ -5,26 +5,20 @@ add_compile_options(-Wall -Wextra -Wpedantic -std=gnu11)
 include(CTest)
 enable_testing()
 
-set(SOURCES 
-    src/life/life.c 
-    src/gui/gui.c
-    src/life/patterns.c
-    src/base/base.c
-    src/globals/globals.c
-    )
+set(BASE_GAME
+        src/main.c
+        src/main.c
+        src/base/array2d.c
+        src/base/array2d.h
+        src/base/types.h
+        src/life/sim.c
+        src/life/sim.h
+)
 
 set(HEADERS 
-    src/config.h
-    src/life/life.h 
-    src/globals/globals.h 
-    src/gui/gui.h
-    src/config.h
-    lib/ubench/ubench.h
-    src/base/base.h
-    src/life/patterns.h
     )
 
-add_executable(game_of_life src/main.c ${SOURCES} ${HEADERS})
+add_executable(game_of_life src/main.c ${BASE_GAME})
 target_include_directories(game_of_life PRIVATE src)
 
 set(CPACK_PROJECT_NAME ${PROJECT_NAME})
@@ -41,19 +35,19 @@ target_link_libraries(game_of_life PRIVATE raylib)
 
 
 project(tests)
-add_executable(tests tests/test.c ${SOURCES} ${HEADERS})
+add_executable(tests tests/test.c ${BASE_GAME})
 target_include_directories(tests PRIVATE lib/munit)
 target_include_directories(tests PRIVATE src)
 target_include_directories(tests PRIVATE lib/ubench)
 target_link_libraries(tests PRIVATE raylib)
 
 project(benchmarks)
-set(BENCHMARKS_SOURCES 
+set(BENCHMARKS_SOURCES
     benchmarks/benchmark_life.c
     )
 set(BENCHMARKS_HEADERS 
     )
-add_executable(benchmarks benchmarks/main.c ${SOURCES} ${HEADERS} ${BENCHMARKS_SOURCES} ${BENCHMARKS_HEADERS})
+add_executable(benchmarks benchmarks/main.c ${BASE_GAME} ${BENCHMARKS_SOURCES})
 target_include_directories(benchmarks PRIVATE lib/munit)
 target_include_directories(benchmarks PRIVATE src)
 target_include_directories(benchmarks PRIVATE lib/ubench)
