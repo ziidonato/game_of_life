@@ -54,25 +54,14 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7f36d809-ce61-450c-bb6c-f093498a761e" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/base/array2d.c" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/base/array2d.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/base/types.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/life/sim.c" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/life/sim.h" afterDir="false" />
+    <list default="true" id="7f36d809-ce61-450c-bb6c-f093498a761e" name="Changes" comment="changed project structure">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/base/base.c" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/base/base.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/config.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/globals/globals.c" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/globals/globals.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/gui/gui.c" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/gui/gui.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/life/life.c" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/life/life.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/life/patterns.c" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/life/patterns.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/base/array2d.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/base/array2d.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/base/array2d.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/base/array2d.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/base/types.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/base/types.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/life/sim.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/life/sim.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/life/sim.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/life/sim.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.c" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -80,10 +69,10 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ClangdSettings">
-    <option name="formatViaClangd" value="false" />
-  </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="CMakeBuildProfile:Debug" />
+  <component name="FormatOnSaveOptions">
+    <option name="myRunOnSave" value="true" />
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
@@ -91,6 +80,7 @@
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RESET_MODE" value="MIXED" />
   </component>
   <component name="MacroExpansionManager">
     <option name="directoryName" value="8vn89kvi" />
@@ -102,7 +92,7 @@
     <scope name="C/C++ Project" pattern="file[game_of_life]:src//*||file[game_of_life]:tests//*||file[game_of_life]:benchmarks//*" />
   </component>
   <component name="ProblemsViewState">
-    <option name="selectedTabId" value="ProjectErrors" />
+    <option name="selectedTabId" value="CurrentFile" />
   </component>
   <component name="ProjectApplicationVersion">
     <option name="ide" value="CLion" />
@@ -121,34 +111,39 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
-    &quot;ASKED_MARK_IGNORED_FILES_AS_EXCLUDED&quot;: &quot;true&quot;,
-    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.cidr.known.project.marker&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;cf.advertisement.text.has.clang-format&quot;: &quot;true&quot;,
-    &quot;cf.advertisement.text.overridden&quot;: &quot;true&quot;,
-    &quot;cf.first.check.clang-format&quot;: &quot;false&quot;,
-    &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;single__ptr&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/ziido/CLionProjects/game_of_life/CMakeLists.txt&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;fileTemplates&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "ASKED_MARK_IGNORED_FILES_AS_EXCLUDED": "true",
+    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.cidr.known.project.marker": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "cf.advertisement.text.has.clang-format": "true",
+    "cf.advertisement.text.overridden": "true",
+    "cf.first.check.clang-format": "false",
+    "cidr.known.project.marker": "true",
+    "git-widget-placeholder": "single__ptr",
+    "ignore.virus.scanning.warn.message": "true",
+    "last_opened_file_path": "C:/Users/ziido/CLionProjects/game_of_life/CMakeLists.txt",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "run.code.analysis.last.selected.profile": "pProject Default",
+    "settings.editor.selected.configurable": "actions.on.save",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RunManager" selected="CMake Application.game_of_life">
+    <configuration default="true" type="CLionExternalRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true">
+      <method v="2">
+        <option name="CLION.EXTERNAL.BUILD" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="Continuous" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="benchmarks" TARGET_NAME="Continuous" CONFIG_NAME="Debug">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
@@ -289,11 +284,6 @@
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true">
-      <method v="2">
-        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="benchmarks" type="CMakeRunConfiguration" factoryName="Application" PROGRAM_PARAMS="--output=../benchmarks/benchmark-report.csv" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="benchmarks" TARGET_NAME="benchmarks" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="benchmarks" RUN_TARGET_NAME="benchmarks">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
@@ -376,8 +366,18 @@
       <workItem from="1694202282956" duration="2812000" />
       <workItem from="1694224793432" duration="1811000" />
       <workItem from="1694439754244" duration="460000" />
-      <workItem from="1694440301725" duration="1932000" />
+      <workItem from="1694440301725" duration="2104000" />
+      <workItem from="1694526124168" duration="8095000" />
     </task>
+    <task id="LOCAL-00001" summary="changed project structure">
+      <option name="closed" value="true" />
+      <created>1694442414727</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1694442414727</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -429,6 +429,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+    <MESSAGE value="changed project structure" />
+    <option name="LAST_COMMIT_MESSAGE" value="changed project structure" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
