@@ -1,9 +1,9 @@
 #pragma once
 #include <stdint.h>
 
-typedef enum { DEAD = 0, ALIVE = 1 } CellState;
+typedef enum CellState { DEAD = 0, ALIVE = 1 } CellState;
 
-typedef struct {
+typedef struct Coord {
     uint64_t x;
     uint64_t y;
 } Coord;

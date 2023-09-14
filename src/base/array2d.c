@@ -37,8 +37,11 @@ void array2d_resize(Array2D *array, uint64_t height, uint64_t width)
     array->data = temp;
     uint64_t offset = array->height / 2 * width + array->width / 2;
 
-    memmove(array->data + offset, array->data,
-            array->height * array->width * sizeof(CellState));
+    memmove(
+        array->data + offset,
+        array->data,
+        array->height * array->width * sizeof(CellState)
+    );
     memset(array->data, 0, offset * sizeof(CellState));
 
     array->height = height;
@@ -62,6 +65,6 @@ void array2d_print(Array2D *array)
         printf("\n");
     }
 
-    printf("Height: %llu\n", array->height);
-    printf("Width: %llu\n", array->width);
+    printf("Height: %lu\n", array->height);
+    printf("Width: %lu\n", array->width);
 }

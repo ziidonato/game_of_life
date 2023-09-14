@@ -2,7 +2,7 @@
 #include "base/array2d.h"
 #include <pthread.h>
 
-typedef struct {
+typedef struct LifeSim {
     Array2D *array;
     int64_t current_generation;
     int64_t total_generations_to_simulate;
@@ -10,7 +10,7 @@ typedef struct {
 
 } LifeSim;
 
-typedef struct {
+typedef struct BufferedSim {
     LifeSim *work_sim;
     LifeSim *display_sim;
 } BufferedSim;

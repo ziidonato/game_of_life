@@ -1,7 +1,7 @@
 #include "sim.h"
 #include "base/array2d.h"
 #include "base/types.h"
-#include <stdlib.h>
+#include <string.h>
 
 uint8_t within_bounds(Array2D *array, Coord coord)
 {
@@ -71,8 +71,9 @@ void next_generation(LifeSim *sim)
 {
 
     if (lives_on_borders(sim->array)) {
-        array2d_resize(sim->array, sim->array->height * 2,
-                       sim->array->width * 2);
+        array2d_resize(
+            sim->array, sim->array->height * 2, sim->array->width * 2
+        );
     }
 
     Array2D *next = array2d_new(sim->array->height, sim->array->width);
@@ -90,9 +91,64 @@ void next_generation(LifeSim *sim)
     sim->current_generation++;
 }
 
+uint8_t should_simulate(LifeSim *sim)
+{
+    return sim->current_generation < sim->total_generations_to_simulate;
+}
+
 void simulate(LifeSim *sim)
 {
-    while (sim->current_generation < sim->total_generations_to_simulate) {
+    while (should_simulate(sim)) {
         next_generation(sim);
     }
+}
+
+void next_generation_threaded(LifeSim *sim)
+{
+    pthread_mutex_lock(&sim->mutex);
+    next_generation(sim);
+    pthread_mutex_unlock(&sim->mutex);
+}
+
+void change_buffer(BufferedSim *sim)
+{
+    LifeSim *work_sim = sim->work_sim;
+    LifeSim *display_sim = sim->display_sim;
+    Array2D *display_array = display_sim->array;
+    Array2D *work_array = work_sim->array;
+
+    if (pthread_mutex_trylock(&display_sim->mutex) != 0) {
+        return;
+    }
+
+    pthread_mutex_lock(&work_sim->mutex);
+
+    array2d_free(display_array);
+    display_array = array2d_new(work_array->height, work_array->width);
+
+    memcpy(
+        display_array->data,
+        work_array->data,
+        work_array->height * work_array->width * sizeof(CellState)
+    );
+
+    display_sim->current_generation = work_sim->current_generation;
+    pthread_mutex_unlock(&display_sim->mutex);
+    pthread_mutex_unlock(&work_sim->mutex);
+}
+
+void *simulate_thread(void *arg)
+{
+    BufferedSim *sim = (BufferedSim *)arg;
+
+    pthread_mutex_lock(&sim->work_sim->mutex);
+    while (should_simulate(sim->work_sim)) {
+        pthread_mutex_unlock(&sim->work_sim->mutex);
+        next_generation_threaded(sim->work_sim);
+
+        change_buffer(sim);
+    }
+
+    pthread_mutex_unlock(&sim->work_sim->mutex);
+    pthread_exit(NULL);
 }

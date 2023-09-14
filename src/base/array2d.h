@@ -2,7 +2,7 @@
 #include "types.h"
 #include <stdint.h>
 
-typedef struct {
+typedef struct Array2D {
     uint64_t height;
     uint64_t width;
     CellState *data;

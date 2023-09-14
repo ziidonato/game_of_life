@@ -55,8 +55,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7f36d809-ce61-450c-bb6c-f093498a761e" name="Changes" comment="changed project structure">
+      <change afterPath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/gui/gui.c" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/gui/gui.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.clang-format" beforeDir="false" afterPath="$PROJECT_DIR$/.clang-format" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/benchmarks/benchmark-report.csv" beforeDir="false" afterPath="$PROJECT_DIR$/benchmarks/first_iteration.csv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/base/array2d.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/base/array2d.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/base/array2d.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/base/array2d.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/base/types.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/base/types.h" afterDir="false" />
@@ -127,7 +133,7 @@
     "cidr.known.project.marker": "true",
     "git-widget-placeholder": "single__ptr",
     "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "C:/Users/ziido/CLionProjects/game_of_life/CMakeLists.txt",
+    "last_opened_file_path": "/home/zii/CLionProjects/game_of_life/Makefile",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -139,11 +145,6 @@
   }
 }]]></component>
   <component name="RunManager" selected="CMake Application.game_of_life">
-    <configuration default="true" type="CLionExternalRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true">
-      <method v="2">
-        <option name="CLION.EXTERNAL.BUILD" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="Continuous" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="benchmarks" TARGET_NAME="Continuous" CONFIG_NAME="Debug">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
@@ -284,6 +285,11 @@
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
+    <configuration default="true" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="benchmarks" type="CMakeRunConfiguration" factoryName="Application" PROGRAM_PARAMS="--output=../benchmarks/benchmark-report.csv" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="benchmarks" TARGET_NAME="benchmarks" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="benchmarks" RUN_TARGET_NAME="benchmarks">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
@@ -313,6 +319,12 @@
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
+    </configuration>
+    <configuration name="ClangFormat" type="MAKEFILE_TARGET_RUN_CONFIGURATION" factoryName="Makefile">
+      <makefile filename="$PROJECT_DIR$/Makefile" target="format" workingDirectory="" arguments="">
+        <envs />
+      </makefile>
+      <method v="2" />
     </configuration>
     <list>
       <item itemvalue="CMake Application.benchmarks" />
@@ -349,6 +361,7 @@
       <item itemvalue="CMake Application.raylib" />
       <item itemvalue="CMake Application.glfw" />
       <item itemvalue="CMake Application.update_mappings" />
+      <item itemvalue="Makefile Target.ClangFormat" />
     </list>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -368,6 +381,7 @@
       <workItem from="1694439754244" duration="460000" />
       <workItem from="1694440301725" duration="2104000" />
       <workItem from="1694526124168" duration="8095000" />
+      <workItem from="1694672761514" duration="6631000" />
     </task>
     <task id="LOCAL-00001" summary="changed project structure">
       <option name="closed" value="true" />

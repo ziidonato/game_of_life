@@ -16,9 +16,11 @@ set(BASE_GAME
 )
 
 set(GUI
+        src/gui/gui.c
+        src/gui/gui.h
 )
 
-add_executable(game_of_life src/main.c ${BASE_GAME})
+add_executable(game_of_life src/main.c ${BASE_GAME} ${GUI})
 target_include_directories(game_of_life PRIVATE src)
 
 set(CPACK_PROJECT_NAME ${PROJECT_NAME})
@@ -44,8 +46,6 @@ target_link_libraries(tests PRIVATE raylib)
 project(benchmarks)
 set(BENCHMARKS_SOURCES
         benchmarks/benchmark_life.c
-        src/gui/gui.c
-        src/gui/gui.h
 )
 set(BENCHMARKS_HEADERS
 )
