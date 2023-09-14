@@ -1,4 +1,4 @@
-#include "array2d.h"
+#include "types.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -65,6 +65,15 @@ void array2d_print(Array2D *array)
         printf("\n");
     }
 
-    printf("Height: %lu\n", array->height);
-    printf("Width: %lu\n", array->width);
+    printf("Height: %llu\n", array->height);
+    printf("Width: %llu\n", array->width);
+}
+
+void array2d_copy(Array2D *dest, Array2D *src)
+{
+    dest->height = src->height;
+    dest->width = src->width;
+    dest->data =
+        realloc(dest->data, src->height * src->width * sizeof(CellState));
+    memcpy(dest->data, src->data, src->height * src->width * sizeof(CellState));
 }

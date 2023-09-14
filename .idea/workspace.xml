@@ -55,17 +55,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7f36d809-ce61-450c-bb6c-f093498a761e" name="Changes" comment="changed project structure">
-      <change afterPath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/gui/gui.c" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/gui/gui.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.clang-format" beforeDir="false" afterPath="$PROJECT_DIR$/.clang-format" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/base/lifesim.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/benchmarks/benchmark-report.csv" beforeDir="false" afterPath="$PROJECT_DIR$/benchmarks/first_iteration.csv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/base/array2d.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/base/array2d.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/base/array2d.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/base/array2d.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/base/array2d.h" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/base/types.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/base/types.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/gui/gui.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/gui/gui.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/gui/gui.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/gui/gui.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/life/sim.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/life/sim.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/life/sim.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/life/sim.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.c" afterDir="false" />
@@ -87,6 +84,20 @@
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
     <option name="RESET_MODE" value="MIXED" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+  "lastFilter": {
+    "state": "OPEN",
+    "assignee": "ziidonato"
+  }
+}]]></component>
+  <component name="GithubPullRequestsUISettings">
+    <option name="selectedUrlAndAccountId">
+      <UrlAndAccount>
+        <option name="accountId" value="253ea49a-ff15-48ee-ad51-d16fd43c9783" />
+        <option name="url" value="https://github.com/ziidonato/game_of_life.git" />
+      </UrlAndAccount>
+    </option>
   </component>
   <component name="MacroExpansionManager">
     <option name="directoryName" value="8vn89kvi" />
@@ -140,7 +151,7 @@
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
     "run.code.analysis.last.selected.profile": "pProject Default",
-    "settings.editor.selected.configurable": "actions.on.save",
+    "settings.editor.selected.configurable": "project.scopes",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -391,7 +402,15 @@
       <option name="project" value="LOCAL" />
       <updated>1694442414727</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="hopefully fixed git issues">
+      <option name="closed" value="true" />
+      <created>1694699336009</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1694699336009</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -444,7 +463,8 @@
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="changed project structure" />
-    <option name="LAST_COMMIT_MESSAGE" value="changed project structure" />
+    <MESSAGE value="hopefully fixed git issues" />
+    <option name="LAST_COMMIT_MESSAGE" value="hopefully fixed git issues" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

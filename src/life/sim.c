@@ -1,5 +1,4 @@
 #include "sim.h"
-#include "base/array2d.h"
 #include "base/types.h"
 #include <string.h>
 
@@ -21,12 +20,12 @@ uint8_t neighbors(Array2D *array, Coord coord)
             continue;
         }
 
-        if (i % 3 - 1 < 0 || i / 3 - 1 < 0) {
+        int64_t x_offset = i % 3 - 1;
+        int64_t y_offset = i / 3 - 1;
+
+        if (coord.x + x_offset < 0 || coord.y + y_offset < 0) {
             continue;
         }
-
-        uint64_t x_offset = i % 3 - 1;
-        uint64_t y_offset = i / 3 - 1;
 
         Coord new_coord = {coord.x + x_offset, coord.y + y_offset};
 
@@ -150,5 +149,5 @@ void *simulate_thread(void *arg)
     }
 
     pthread_mutex_unlock(&sim->work_sim->mutex);
-    pthread_exit(NULL);
+    return NULL;
 }

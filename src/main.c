@@ -1,24 +1,31 @@
+#include "gui/gui.h"
 #include "life/sim.h"
 #include <pthread.h>
 #include <stdlib.h>
 
 int main(void)
 {
-    LifeSim *sim = malloc(sizeof(LifeSim));
-    sim->current_generation = 0;
-    sim->total_generations_to_simulate = 100;
-    sim->array = array2d_new(10, 10);
-    sim->mutex = (pthread_mutex_t)PTHREAD_MUTEX_INITIALIZER;
+    LifeSim *sim = life_sim_new(45, 80, 1000);
 
-    for (uint64_t x = 0; x < sim->array->height; x++) {
-        for (uint64_t y = 0; y < sim->array->width; y++) {
+    for (int x = 0; x < sim->array->height; x++) {
+        for (int y = 0; y < sim->array->width; y++) {
             Coord coord = {x, y};
             array2d_set(sim->array, coord, ALIVE);
         }
     }
 
-    simulate(sim);
+    BufferedSim *buffered_sim = buffered_sim_new(sim);
 
-    array2d_print(sim->array);
+    pthread_t work_thread;
+    pthread_t display_thread;
+
+    pthread_create(&work_thread, NULL, simulate_thread, buffered_sim);
+    pthread_create(
+        &display_thread, NULL, gui_thread, buffered_sim->display_sim
+    );
+
+    pthread_join(work_thread, NULL);
+    pthread_join(display_thread, NULL);
+
     return 0;
 }

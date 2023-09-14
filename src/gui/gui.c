@@ -1,5 +1,5 @@
 #include "gui.h"
-#include "base/array2d.h"
+#include "base/types.h"
 #include "life/sim.h"
 #include <raylib.h>
 #include <stdlib.h>
@@ -25,13 +25,30 @@ void gui_draw_grid(Array2D *array)
 
 void gui_draw_hud(LifeSim *sim)
 {
-    char *hud = TextFormat(
+    const char *hud = TextFormat(
         "Generation: %lu / %lu",
         sim->current_generation,
         sim->total_generations_to_simulate
     );
     DrawText(hud, 10, 10, 20, BLACK);
-    free(hud);
 }
 
-void *gui_thread(void *arg) {}
+void gui_draw(LifeSim *sim)
+{
+    BeginDrawing();
+    ClearBackground(RAYWHITE);
+    gui_draw_grid(sim->array);
+    gui_draw_hud(sim);
+    EndDrawing();
+}
+
+void *gui_thread(void *arg)
+{
+    LifeSim *sim = (LifeSim *)arg;
+    while (!WindowShouldClose()) {
+        pthread_mutex_lock(&sim->mutex);
+        gui_draw(sim);
+        pthread_mutex_unlock(&sim->mutex);
+    }
+    return NULL;
+}

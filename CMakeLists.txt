@@ -9,10 +9,10 @@ set(BASE_GAME
         src/main.c
         src/main.c
         src/base/array2d.c
-        src/base/array2d.h
         src/base/types.h
         src/life/sim.c
         src/life/sim.h
+        src/base/lifesim.c
 )
 
 set(GUI
