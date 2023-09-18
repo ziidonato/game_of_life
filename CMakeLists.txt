@@ -13,6 +13,7 @@ set(BASE_GAME
         src/life/sim.c
         src/life/sim.h
         src/base/lifesim.c
+        src/config.h
 )
 
 set(GUI

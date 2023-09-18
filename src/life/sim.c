@@ -1,5 +1,6 @@
 #include "sim.h"
 #include "base/types.h"
+#include <stdio.h>
 #include <string.h>
 
 uint8_t within_bounds(Array2D *array, Coord coord)
@@ -9,7 +10,8 @@ uint8_t within_bounds(Array2D *array, Coord coord)
 
 CellState is_alive(Array2D *array, Coord coord)
 {
-    return within_bounds(array, coord) && array2d_get(array, coord) == ALIVE;
+    return within_bounds(array, coord) ? array2d_get(array, coord) == ALIVE
+                                       : DEAD;
 }
 
 uint8_t neighbors(Array2D *array, Coord coord)
@@ -71,7 +73,9 @@ void next_generation(LifeSim *sim)
 
     if (lives_on_borders(sim->array)) {
         array2d_resize(
-            sim->array, sim->array->height * 2, sim->array->width * 2
+            sim->array,
+            sim->array->height * 2,
+            sim->array->width * 2
         );
     }
 
@@ -93,6 +97,11 @@ void next_generation(LifeSim *sim)
 uint8_t should_simulate(LifeSim *sim)
 {
     return sim->current_generation < sim->total_generations_to_simulate;
+}
+
+uint8_t should_simulate_threaded(LifeSimApplication *app)
+{
+    return should_simulate(app->buffered_sim->work_sim) && !app->should_quit;
 }
 
 void simulate(LifeSim *sim)
@@ -138,10 +147,11 @@ void change_buffer(BufferedSim *sim)
 
 void *simulate_thread(void *arg)
 {
-    BufferedSim *sim = (BufferedSim *)arg;
+    LifeSimApplication *app = arg;
+    BufferedSim *sim = app->buffered_sim;
 
     pthread_mutex_lock(&sim->work_sim->mutex);
-    while (should_simulate(sim->work_sim)) {
+    while (should_simulate_threaded(app)) {
         pthread_mutex_unlock(&sim->work_sim->mutex);
         next_generation_threaded(sim->work_sim);
 
